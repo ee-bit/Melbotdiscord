@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mel™️ - Bot de Moderação</title>
+    <style>
+        body {
+            background-color: #0D1B2A; /* Azul escuro */
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Menu */
+        .menu-bar {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-bar div {
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            margin: 4px 0;
+        }
+
+        /* Estilo do dropdown do menu */
+        .menu-options {
+            display: none;
+            flex-direction: column;
+            background-color: #1B263B;
+            padding: 10px;
+            position: absolute;
+            top: 50px;
+            right: 0;
+            border-radius: 5px;
+        }
+
+        .menu-options a {
+            color: white;
+            text-decoration: none;
+            margin: 5px 0;
+        }
+
+        .menu-options a:hover {
+            text-decoration: underline;
+        }
+
+        /* Seções de conteúdo */
+        .section {
+            display: none; /* Escondido por padrão */
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Estilo do botão de Suporte */
+        .support-button {
+            background-color: #0a3d62; /* Azul marinho */
+            color: white;
+            padding: 20px 40px;
+            font-size: 24px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .support-button:hover {
+            background-color: #07375c;
+        }
+
+        /* Estilo da seção de Comandos */
+        .commands-container ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .commands-container li {
+            margin: 5px 0;
+        }
+
+        /* Estilo do botão de retornar */
+        .back-button {
+            display: none; /* Escondido por padrão */
+            background-color: #8B0000; /* Vermelho vinho */
+            color: white;
+            padding: 10px 20px;
+            font-size: 24px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #a40000;
+        }
+
+        /* Estilo do botão de convite */
+        .invite-button {
+            background-color: #001F3F; /* Azul escuro */
+            color: white;
+            padding: 20px 40px;
+            font-size: 24px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none; /* Remove sublinhado */
+            margin-top: 20px;
+        }
+
+        .invite-button:hover {
+            background-color: #00274D;
+        }
+
+        /* Estilo da imagem do bot */
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 20px 0;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de menu no canto superior direito -->
+    <div class="menu-bar" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Opções de menu -->
+    <div class="menu-options" id="menu-options">
+        <a href="#" onclick="showSection('support')">Suporte</a>
+        <a href="#" onclick="showSection('commands')">Comandos</a>
+        <a href="#" onclick="showSection('focus')">Foco</a>
+    </div>
+
+    <!-- Seção Inicial com a Imagem do Bot -->
+    <div id="home" class="section active" style="display: block;">
+        <img src="https://media.discordapp.net/attachments/1290755563965120573/1290767538472615976/62_Sem_Titulo_20241001170915.png?ex=66fda872&is=66fc56f2&hm=bd259abdb3ffd0cfc595fbcb5259b061efdda648a8507d37316142b513c45249&" alt="Foto do bot" class="profile-pic">
+        <h1>Mel™️ o seu bot de moderação perfeito! 🤩</h1>
+        <button class="invite-button">
+            <a href="https://discord.com/oauth2/authorize?client_id=1275264074250457131&permissions=8&integration_type=0&scope=bot" target="_blank" style="color: white; text-decoration: none;">Me convide com este link</a>
+        </button>
+    </div>
+
+    <!-- Seção de Suporte -->
+    <div id="support" class="section">
+        <button class="support-button" onclick="window.open('https://discord.gg/yEDTJSJRUE', '_blank')">
+            🔎 Suporte
+        </button>
+        <button class="back-button" onclick="showSection('home')">Voltar ao Início</button>
+    </div>
+
+    <!-- Seção de Comandos -->
+    <div id="commands" class="section commands-container">
+        <h1>Prefixo: !</h1>
+        <ul>
+            <li>adicionar</li>
+            <li>ajuda</li>
+            <li>avatar</li>
+            <li>ban</li>
+            <li>botinfo</li>
+            <li>clear</li>
+            <li>daily</li>
+            <li>doar</li>
+            <li>help</li>
+            <li>kick</li>
+            <li>moedas</li>
+            <li>nuke</li>
+            <li>roles</li>
+        </ul>
+        <button class="back-button" onclick="showSection('home')">Voltar ao Início</button>
+    </div>
+
+    <!-- Seção de Foco -->
+    <div id="focus" class="section">
+        <p>O foco deste bot é moderação e um pouco de economia.</p>
+        <button class="back-button" onclick="showSection('home')">Voltar ao Início</button>
+    </div>
+
+    <script>
+        // Função para alternar a exibição do menu
+        function toggleMenu() {
+            const menu = document.getElementById('menu-options');
+            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        // Função para mostrar a seção correspondente
+        function showSection(sectionId) {
+            // Oculta todas as seções
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.style.display = 'none'; // Oculta cada seção
+            });
+
+            // Mostra a seção desejada
+            const activeSection = document.getElementById(sectionId);
+            if (activeSection) {
+                activeSection.style.display = 'block'; // Mostra a seção
+            }
+
+            // Exibe o botão de voltar
+            const backButton = activeSection.querySelector('.back-button');
+            if (backButton) {
+                backButton.style.display = 'block'; // Mostra o botão de voltar
+            }
+
+            // Oculta o menu após a seleção
+            const menu = document.getElementById('menu-options');
+            menu.style.display = 'none';
+        }
+    </script>
+</body>
+  </html>
